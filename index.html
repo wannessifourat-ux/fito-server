@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fito Server — سيرفر سحابي خاص</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--white:#ffffff;--gold:#f5c842;--gray1:#111;--gray2:#1a1a1a;--gray3:#2a2a2a;--gray4:#444;--gray5:#888;--gray6:#bbb}
+body{background:var(--black);color:var(--white);font-family:Arial,sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-bottom:0.5px solid #222}
+.logo{font-size:1.2rem;font-weight:500;letter-spacing:-0.5px}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:13px;color:var(--gray5);text-decoration:none;cursor:pointer}
+.nav-links a:hover{color:var(--white)}
+.btn-nav{background:var(--white);color:var(--black);border:none;border-radius:6px;padding:0.5rem 1.2rem;font-size:13px;font-weight:500;cursor:pointer}
+.hero{text-align:center;padding:5rem 2rem 4rem}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:0.5px solid #333;border-radius:20px;padding:0.4rem 1rem;font-size:12px;color:var(--gray5);margin-bottom:2rem}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#22c55e}
+.hero h1{font-size:3rem;font-weight:500;line-height:1.15;letter-spacing:-1px;margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:1.05rem;color:var(--gray5);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-group{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);border:none;border-radius:8px;padding:0.85rem 2rem;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-primary:hover{opacity:0.9}
+.btn-secondary{background:transparent;color:var(--white);border:0.5px solid #333;border-radius:8px;padding:0.85rem 2rem;font-size:15px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid #1e1e1e;border-bottom:0.5px solid #1e1e1e}
+.stat{padding:2rem;text-align:center;border-right:0.5px solid #1e1e1e}
+.stat:last-child{border-right:none}
+.stat .num{font-size:2rem;font-weight:500;color:var(--white);margin-bottom:4px}
+.stat .lbl{font-size:13px;color:var(--gray5)}
+.features{padding:4rem 2rem}
+.section-label{font-size:12px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:1.6rem;font-weight:500;margin-bottom:3rem;color:var(--white)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#1e1e1e;border:0.5px solid #1e1e1e;border-radius:12px;overflow:hidden}
+.feat{background:var(--black);padding:1.5rem}
+.feat:hover{background:#111}
+.feat i{font-size:22px;color:var(--gold);margin-bottom:1rem;display:block}
+.feat h3{font-size:14px;font-weight:500;color:var(--white);margin-bottom:6px}
+.feat p{font-size:13px;color:var(--gray5);line-height:1.6}
+.pricing{padding:4rem 2rem;text-align:center;background:#0d0d0d}
+.price-card{display:inline-block;background:#111;border:0.5px solid #2a2a2a;border-radius:16px;padding:2.5rem;max-width:380px;width:100%;text-align:right;position:relative}
+.price-card .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:11px;font-weight:500;padding:4px 14px;border-radius:20px;white-space:nowrap}
+.price-card .amount{font-size:3rem;font-weight:500;color:var(--white);margin:1rem 0 0.3rem}
+.price-card .amount span{font-size:1rem;color:var(--gray5);font-weight:400}
+.price-card .desc{font-size:13px;color:var(--gray5);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:0.5px solid #222}
+.price-list{list-style:none;margin-bottom:2rem}
+.price-list li{font-size:13px;color:var(--gray6);padding:6px 0;display:flex;align-items:center;gap:8px}
+.price-list li i{font-size:15px;color:#22c55e}
+.btn-buy{width:100%;background:var(--gold);color:var(--black);border:none;border-radius:8px;padding:1rem;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:block;text-align:center}
+.btn-buy:hover{opacity:0.9}
+.faq{padding:4rem 2rem;max-width:640px;margin:0 auto}
+.faq-item{border-bottom:0.5px solid #1e1e1e;padding:1.2rem 0}
+.faq-item h4{font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px}
+.faq-item p{font-size:13px;color:var(--gray5);line-height:1.7}
+.legal{padding:2rem;border-top:0.5px solid #1e1e1e}
+.legal-tabs{display:flex;gap:0;margin-bottom:1.5rem;background:#111;border-radius:8px;padding:4px;width:fit-content}
+.ltab{background:transparent;color:var(--gray5);border:none;border-radius:6px;padding:0.5rem 1.2rem;font-size:13px;cursor:pointer}
+.ltab.active{background:#222;color:var(--white)}
+.legal-content{font-size:13px;color:var(--gray5);line-height:1.9;display:none}
+.legal-content.active{display:block}
+.footer{padding:2rem;border-top:0.5px solid #1e1e1e;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.footer p{font-size:12px;color:var(--gray4)}
+.footer a{font-size:12px;color:var(--gray4);text-decoration:none;margin-right:16px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Fito<span>.</span>Server</div>
+  <div class="nav-links">
+    <a href="#features">المميزات</a>
+    <a href="#pricing">الأسعار</a>
+    <a href="#faq">الأسئلة الشائعة</a>
+  </div>
+  <button class="btn-nav" onclick="location.href='https://buy.paddle.com/product/pri_01kv0kq31fzg8emxq6zswbrzpt'">احجز الآن</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag"><span class="dot"></span> الخادم نشط ويعمل 24/7</div>
+  <h1>سيرفر سحابي<br>يعمل <em>بلا حدود</em></h1>
+  <p>خادم Firebase خاص بك وحدك — سريع، آمن، وجاهز للعمل من أول لحظة. ادفع شهرياً وألغِ متى تشاء.</p>
+  <div class="cta-group">
+    <a class="btn-primary" href="https://buy.paddle.com/product/pri_01kv0kq31fzg8emxq6zswbrzpt">احجز سيرفرك — $4.95/شهر</a>
+    <button class="btn-secondary">شاهد كيف يعمل</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">99.9%</div><div class="lbl">وقت التشغيل</div></div>
+  <div class="stat"><div class="num">$4.95</div><div class="lbl">فقط كل شهر</div></div>
+  <div class="stat"><div class="num">24/7</div><div class="lbl">دعم فني</div></div>
+</div>
+
+<div class="features" id="features">
+  <div class="section-label">المميزات</div>
+  <div class="section-title">كل ما تحتاجه في مكان واحد</div>
+  <div class="features-grid">
+    <div class="feat"><i class="ti ti-server-2"></i><h3>سيرفر مخصص</h3><p>Firebase server خاص بك وحدك — لا مشاركة مع أحد</p></div>
+    <div class="feat"><i class="ti ti-world"></i><h3>متاح للعالم</h3><p>موقعك يعمل من أي مكان في العالم بدون انقطاع</p></div>
+    <div class="feat"><i class="ti ti-shield-lock"></i><h3>حماية كاملة</h3><p>SSL + قواعد Firebase الأمنية تحمي بياناتك</p></div>
+    <div class="feat"><i class="ti ti-bolt"></i><h3>سريع جداً</h3><p>سيرفرات Google Cloud بأقل زمن استجابة</p></div>
+    <div class="feat"><i class="ti ti-refresh"></i><h3>تجديد تلقائي</h3><p>لا تنقطع خدمتك — التجديد يصير تلقائياً</p></div>
+    <div class="feat"><i class="ti ti-headset"></i><h3>دعم مباشر</h3><p>تواصل معنا على الإيميل في أي وقت</p></div>
+  </div>
+</div>
+
+<div class="pricing" id="pricing">
+  <div class="section-label" style="margin-bottom:0.5rem">الأسعار</div>
+  <div class="section-title" style="margin-bottom:2.5rem">سعر واحد — كل شيء مشمول</div>
+  <div class="price-card">
+    <div class="badge">الأكثر طلباً</div>
+    <div style="font-size:14px;color:#888;margin-top:0.5rem">الخطة الشهرية</div>
+    <div class="amount">$4.95 <span>/ شهر</span></div>
+    <div class="desc">ادفع شهرياً — ألغِ في أي وقت بدون رسوم</div>
+    <ul class="price-list">
+      <li><i class="ti ti-check"></i> سيرفر Firebase مخصص</li>
+      <li><i class="ti ti-check"></i> Firestore Database بلا حدود</li>
+      <li><i class="ti ti-check"></i> SSL مجاني</li>
+      <li><i class="ti ti-check"></i> دعم على الإيميل</li>
+      <li><i class="ti ti-check"></i> لوحة تحكم كاملة</li>
+    </ul>
+    <a class="btn-buy" href="https://buy.paddle.com/product/pri_01kv0kq31fzg8emxq6zswbrzpt">ابدأ الآن</a>
+  </div>
+</div>
+
+<div class="faq" id="faq">
+  <div class="section-label">الأسئلة الشائعة</div>
+  <div class="section-title">أجوبة على أسئلتك</div>
+  <div class="faq-item"><h4>كيف يعمل السيرفر؟</h4><p>بعد الدفع تحصل على Firebase server مخصص يعمل على Google Cloud — يمكنك ربطه بأي موقع أو تطبيق.</p></div>
+  <div class="faq-item"><h4>هل يمكن الإلغاء في أي وقت؟</h4><p>نعم، يمكنك إلغاء الاشتراك في أي وقت بدون رسوم إضافية.</p></div>
+  <div class="faq-item"><h4>ما هي طرق الدفع المقبولة؟</h4><p>نقبل Visa، Mastercard، PayPal، وجميع البطاقات الدولية عبر Paddle.</p></div>
+  <div class="faq-item"><h4>هل البيانات محمية؟</h4><p>نعم، كل البيانات مشفرة بـ SSL ومحمية بقواعد Firebase الأمنية.</p></div>
+</div>
+
+<div class="legal">
+  <div class="legal-tabs">
+    <button class="ltab active" onclick="showTab('terms',this)">شروط الخدمة</button>
+    <button class="ltab" onclick="showTab('privacy',this)">الخصوصية</button>
+    <button class="ltab" onclick="showTab('refund',this)">الاسترداد</button>
+  </div>
+  <div id="terms" class="legal-content active">
+    <p>بالاشتراك في Fito Server توافق على ما يلي: الخدمة للاستخدام المشروع فقط. الاشتراك شهري بـ $4.95 ويُجدد تلقائياً. نحتفظ بحق إيقاف الخدمة عند الاستخدام المخالف. الدفع عبر Paddle ويخضع لسياساتهم.</p>
+  </div>
+  <div id="privacy" class="legal-content">
+    <p>نجمع فقط الاسم والإيميل لتشغيل الخدمة. لا نبيع بياناتك لأي طرف ثالث. بياناتك محفوظة بأمان على Firebase ومشفرة بالكامل.</p>
+  </div>
+  <div id="refund" class="legal-content">
+    <p>يمكن طلب الاسترداد خلال 7 أيام من أول دفعة. بعد 7 أيام لا يمكن الاسترداد. للتواصل: wannessifourat@gmail.com</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 Fito Server</p>
+  <div><a href="#legal">الخصوصية</a><a href="#legal">الشروط</a><a href="mailto:wannessifourat@gmail.com">التواصل</a></div>
+</div>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.legal-content').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.ltab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
